@@ -21,7 +21,7 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         System.out.println("SpringWebSecurityConfiguration");
         http
                 .httpBasic()
-                .and()
+                .disable()
                 .authorizeRequests()
                     .anyRequest()
                     .permitAll()
