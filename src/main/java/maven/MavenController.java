@@ -28,6 +28,7 @@ public class MavenController {
     @RequestMapping(value = "/graphql", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation(@RequestBody Map body) {
+        log.error("body: " + body);
         final String query = (String) body.get("query");
         final Map<String, Object> variables = (Map<String, Object>) body.get("variables");
         final ExecutionResult executionResult = graphql.execute(query, (Object) null, variables);
@@ -36,7 +37,7 @@ public class MavenController {
             result.put("errors", executionResult.getErrors());
             log.error("Errors: {}", executionResult.getErrors());
         }
-        log.info("data: " + executionResult.getData());
+        log.error("data: " + executionResult.getData());
         result.put("data", executionResult.getData());
         return result;
     }
