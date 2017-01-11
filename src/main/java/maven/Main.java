@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MavenController.class, args);
     }
-
+/*
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
@@ -29,5 +29,5 @@ public class Main {
             }
         };
     }
-
+*/
 }
