@@ -1,5 +1,4 @@
-package todomvc;
-
+package maven;
 
 import graphql.ExecutionResult;
 import graphql.GraphQL;
@@ -12,27 +11,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import todomvc.GraphQLController;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-// @Controller
-// @EnableAutoConfiguration
-public class GraphQLController {
-
-
-    TodoSchema todoSchema = new TodoSchema();
-    GraphQL graphql = new GraphQL(todoSchema.getSchema());
-
-    private static final Logger log = LoggerFactory.getLogger(GraphQLController.class);
+/**
+ * Created by pisarenko on 11.01.2017.
+ */
+@Controller
+@EnableAutoConfiguration
+public class MavenController {
+    private final MavenSchema schema = new MavenSchema();
+    private final GraphQL graphql = new GraphQL(schema.getSchema());
+    private static final Logger log = LoggerFactory.getLogger(MavenController.class);
 
     @RequestMapping(value = "/graphql", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation(@RequestBody Map body) {
-        String query = (String) body.get("query");
-        Map<String, Object> variables = (Map<String, Object>) body.get("variables");
-        ExecutionResult executionResult = graphql.execute(query, (Object) null, variables);
-        Map<String, Object> result = new LinkedHashMap<>();
+        final String query = (String) body.get("query");
+        final Map<String, Object> variables = (Map<String, Object>) body.get("variables");
+        final ExecutionResult executionResult = graphql.execute(query, (Object) null, variables);
+        final Map<String, Object> result = new LinkedHashMap<>();
         if (executionResult.getErrors().size() > 0) {
             result.put("errors", executionResult.getErrors());
             log.error("Errors: {}", executionResult.getErrors());
@@ -40,6 +40,4 @@ public class GraphQLController {
         result.put("data", executionResult.getData());
         return result;
     }
-
-
 }
