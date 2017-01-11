@@ -13,8 +13,8 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
  * Created by pisarenko on 11.01.2017.
  */
 @Configuration
-// @EnableWebSecurity
-@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+@EnableWebSecurity
+//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
