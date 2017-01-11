@@ -38,7 +38,8 @@ public class MavenController {
             "Accept",
             "Referer",
             "Accept-Encoding",
-            "Accept-Language"})
+            "Accept-Language",
+             "Access-Control-Allow-Origin"})
     @RequestMapping(value = "/graphql", method = RequestMethod.OPTIONS, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation(@RequestBody Map body) {
