@@ -8,6 +8,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * Created by pisarenko on 11.01.2017.
@@ -19,7 +23,16 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         System.out.println("SpringWebSecurityConfiguration");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("OPTIONS");
+        source.registerCorsConfiguration("/**", config);
+        // return new CorsFilter(source);
         http
+                .addFilterBefore(new CorsFilter(source), ChannelProcessingFilter.class)
                 .httpBasic()
                 .disable()
                 .authorizeRequests()
