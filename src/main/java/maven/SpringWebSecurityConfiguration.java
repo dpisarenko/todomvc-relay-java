@@ -15,9 +15,11 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .csrf()
-                    .disable()
+                    .disable();
+        /*
                 .authorizeRequests()
                     .antMatchers("/**")
                     .permitAll();
+                    */
     }
 }
