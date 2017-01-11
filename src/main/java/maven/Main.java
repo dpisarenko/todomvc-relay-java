@@ -25,6 +25,7 @@ public class Main {
                         .addMapping("/**")
                         .allowedMethods("OPTIONS")
                         .allowedOrigins("*")
+                        .allowedHeaders("Access-Control-Request-Headers", "Access-Control-Request-Method")
                         .allowCredentials(true);
             }
         };
