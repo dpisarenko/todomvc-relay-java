@@ -28,6 +28,8 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                 .and()
                 .csrf()
                     .disable()
+                .cors()
+                    .disable()
         ;
         /*
         http.csrf().disable();
