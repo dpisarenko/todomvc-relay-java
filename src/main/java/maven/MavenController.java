@@ -26,7 +26,19 @@ public class MavenController {
     private final GraphQL graphql = new GraphQL(schema.getSchema());
     private static final Logger log = LoggerFactory.getLogger(MavenController.class);
 
-    @CrossOrigin(origins = "http://localhost:8888", allowedHeaders = {"", ""})
+    @CrossOrigin(
+            origins = {"http://localhost:8888", "*"},
+            methods = {RequestMethod.OPTIONS},
+            allowedHeaders = {"Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Host",
+            "Connection",
+            "Origin",
+            "User-Agent",
+            "Accept",
+            "Referer",
+            "Accept-Encoding",
+            "Accept-Language"})
     @RequestMapping(value = "/graphql", method = RequestMethod.OPTIONS, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation(@RequestBody Map body) {
