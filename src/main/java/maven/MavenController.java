@@ -25,7 +25,7 @@ public class MavenController {
     private final GraphQL graphql = new GraphQL(schema.getSchema());
     private static final Logger log = LoggerFactory.getLogger(MavenController.class);
 
-    @RequestMapping(value = "/graphql", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/graphql", method = RequestMethod.OPTIONS, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation(@RequestBody Map body) {
         log.error("body: " + body);
