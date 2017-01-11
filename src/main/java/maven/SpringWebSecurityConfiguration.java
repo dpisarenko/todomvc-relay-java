@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 
 /**
  * Created by pisarenko on 11.01.2017.
@@ -16,7 +17,7 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         System.out.println("SpringWebSecurityConfiguration");
         http
                 .authorizeRequests()
-                    .antMatchers("/**")
+                    .anyRequest()
                     .permitAll().and()
                 .httpBasic()
                     .disable()
