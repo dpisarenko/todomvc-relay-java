@@ -36,6 +36,7 @@ public class MavenController {
             result.put("errors", executionResult.getErrors());
             log.error("Errors: {}", executionResult.getErrors());
         }
+        log.info("data: " + executionResult.getData());
         result.put("data", executionResult.getData());
         return result;
     }
