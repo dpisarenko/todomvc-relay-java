@@ -18,8 +18,6 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                     .disable()
                 .authorizeRequests()
                     .antMatchers("/**")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated();
+                    .permitAll();
     }
 }
