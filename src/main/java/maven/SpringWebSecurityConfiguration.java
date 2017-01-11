@@ -16,11 +16,10 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         System.out.println("SpringWebSecurityConfiguration");
         http
                 .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .and()
-                .httpBasic().disable();
+                    .antMatchers("/**")
+                    .permitAll().and()
+                .csrf()
+                    .disable();
         /*
         http.csrf().disable();
         http.httpBasic().disable();
