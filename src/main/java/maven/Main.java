@@ -25,7 +25,18 @@ public class Main {
                         .addMapping("/**")
                         .allowedMethods("OPTIONS")
                         .allowedOrigins("*")
-                        .allowedHeaders("Access-Control-Request-Headers", "Access-Control-Request-Method")
+                        .allowedHeaders(
+                                "Access-Control-Request-Headers",
+                                "Access-Control-Request-Method",
+                                "Host",
+                                "Connection",
+                                "Origin",
+                                "User-Agent",
+                                "Accept",
+                                "Referer",
+                                "Accept-Encoding",
+                                "Accept-Language",
+                        )
                         .allowCredentials(true)
                         ;
             }
