@@ -11,7 +11,7 @@ import todomvc.GraphQLController;
 /**
  * Created by pisarenko on 11.01.2017.
  */
-@SpringBootApplication
+//@SpringBootApplication
 public class Main {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MavenController.class, args);
