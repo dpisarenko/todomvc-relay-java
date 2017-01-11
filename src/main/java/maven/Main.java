@@ -24,7 +24,8 @@ public class Main {
                 registry
                         .addMapping("/**")
                         .allowedMethods("OPTIONS")
-                        .allowedOrigins("*");
+                        .allowedOrigins("*")
+                        .allowCredentials(true);
             }
         };
     }
