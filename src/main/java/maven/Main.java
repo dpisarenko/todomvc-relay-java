@@ -26,7 +26,8 @@ public class Main {
                         .allowedMethods("OPTIONS")
                         .allowedOrigins("*")
                         .allowedHeaders("Access-Control-Request-Headers", "Access-Control-Request-Method")
-                        .allowCredentials(true);
+                        .allowCredentials(true)
+                        ;
             }
         };
     }
