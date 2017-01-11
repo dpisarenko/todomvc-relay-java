@@ -35,7 +35,8 @@ public class Main {
                                 "Accept",
                                 "Referer",
                                 "Accept-Encoding",
-                                "Accept-Language"
+                                "Accept-Language",
+                                "Access-Control-Allow-Origin"
                         )
                         .allowCredentials(true)
                         ;
