@@ -16,6 +16,7 @@ public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         http.csrf().disable();
         http.httpBasic().disable();
         http.cors().disable();
+        http.authorizeRequests().anyRequest().permitAll();
         //http.authorizeRequests().anyRequest().permitAll();
         /*
                 .authorizeRequests()
