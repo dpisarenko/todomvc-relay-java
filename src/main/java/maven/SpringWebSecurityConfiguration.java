@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SpringWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
+        System.out.println("SpringWebSecurityConfiguration");
         http
                 .authorizeRequests()
                 .anyRequest().authenticated()
