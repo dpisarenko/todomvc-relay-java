@@ -1,13 +1,28 @@
 package maven;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import todomvc.GraphQLController;
 
 /**
  * Created by pisarenko on 11.01.2017.
  */
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(MavenController.class, args);
+    }
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/greeting-javaconfig").allowedOrigins("http://localhost:8888");
+            }
+        };
     }
 }

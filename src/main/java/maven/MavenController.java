@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class MavenController {
     private final GraphQL graphql = new GraphQL(schema.getSchema());
     private static final Logger log = LoggerFactory.getLogger(MavenController.class);
 
+    @CrossOrigin(origins = "http://localhost:8888")
     @RequestMapping(value = "/graphql", method = RequestMethod.OPTIONS, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation(@RequestBody Map body) {
