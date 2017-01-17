@@ -23,7 +23,7 @@ public class Main {
             public void addCorsMappings(CorsRegistry registry) {
                 registry
                         .addMapping("/**")
-                        .allowedMethods("OPTIONS")
+                        .allowedMethods("*")
                         .allowedOrigins("*")
                         .allowedHeaders(
                                 "Access-Control-Request-Headers",
