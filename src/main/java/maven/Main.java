@@ -38,8 +38,7 @@ public class Main {
                                 "Accept-Language",
                                 "Access-Control-Allow-Origin"
                         )
-                        .allowCredentials(true)
-                        ;
+                        .allowCredentials(true);
             }
         };
     }
