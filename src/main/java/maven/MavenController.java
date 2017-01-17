@@ -25,7 +25,7 @@ public class MavenController {
     private final MavenSchema schema = new MavenSchema();
     private final GraphQL graphql = new GraphQL(schema.getSchema());
     private static final Logger log = LoggerFactory.getLogger(MavenController.class);
-
+/*
     @CrossOrigin(
             origins = {"http://localhost:8888", "*"},
             methods = {RequestMethod.OPTIONS, RequestMethod.POST},
@@ -58,6 +58,7 @@ public class MavenController {
         result.put("data", executionResult.getData());
         return result;
     }
+    */
     @RequestMapping(value = "/graphql", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation2(@RequestBody Map body) {
