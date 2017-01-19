@@ -30,7 +30,7 @@ public class MavenController {
         log.error("body: " + body);
         final String query = (String) body.get("query");
         final Map<String, Object> variables = (Map<String, Object>) body.get("variables");
-        final ExecutionResult executionResult = graphql.execute(query, (Object) null, variables);
+        final ExecutionResult executionResult = graphql.execute(query);
         final Map<String, Object> result = new LinkedHashMap<>();
         if (executionResult.getErrors().size() > 0) {
             result.put("errors", executionResult.getErrors());
