@@ -1,0 +1,7 @@
+{
+  allArtifacts(group: "com.graphql-java", name: "graphql-java") {
+    group
+    name
+    version
+  }
+}

@@ -32,8 +32,6 @@ dependencies {
     compile 'org.eclipse.aether:aether-transport-wagon:1.0.0.v20140518'
     compile 'org.apache.maven:maven-aether-provider:3.1.0'
     compile 'org.apache.maven.wagon:wagon-ssh:1.0'
-//    compile 'org.springframework.security:spring-security-web:4.2.1.RELEASE'
-//    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.1.RELEASE'
-
+    compile group: 'org.easytesting', name: 'fest-assert-core', version: '2.0M10'
 }
 
