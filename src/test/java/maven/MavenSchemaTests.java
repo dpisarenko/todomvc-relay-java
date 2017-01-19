@@ -20,7 +20,7 @@ public class MavenSchemaTests {
         final MavenSchema schema = new MavenSchema();
         final GraphQL graphql = new GraphQL(schema.getSchema());
         final String query = FileUtils.readFileToString(
-                new File("src/main/resources/query1.txt"),
+                new File("src/test/resources/query1.txt"),
                 "UTF-8"
         );
         // Run method under test
