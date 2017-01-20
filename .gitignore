@@ -1,5 +1,6 @@
 .gradle
 .idea
 *.iml
-node_modulesbuild/
+build/
 target/
+app/node_modules/
