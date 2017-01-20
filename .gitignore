@@ -1,4 +1,5 @@
 .gradle
 .idea
 *.iml
-node_modules
+node_modulesbuild/
+target/
