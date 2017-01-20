@@ -39,7 +39,6 @@ public class ArtifactDataFetcher implements DataFetcher {
         final String group = (String) dataFetchingEnvironment.getArguments().get(GROUP_ARGUMENT);
         final List<Version> artifactVersions = findArtifacts(group, name);
         return artifactVersions.stream().map(av -> toGraphQL(group, name, av)).collect(Collectors.toList());
-        //return new ArrayList<Object>();
     }
 
     private Object toGraphQL(final String group, final String name, final Version version) {
@@ -58,7 +57,7 @@ public class ArtifactDataFetcher implements DataFetcher {
             final Artifact artifact = new DefaultArtifact( String.format("%s:%s:[0,)", group, name) );
             final VersionRangeRequest rangeRequest = new VersionRangeRequest();
             rangeRequest.setArtifact( artifact );
-            rangeRequest.setRepositories( newRepositories( repoSystem, session ) );
+            rangeRequest.setRepositories( newRepositories() );
             final VersionRangeResult rangeResult = repoSystem.resolveVersionRange( session, rangeRequest );
             return rangeResult.getVersions();
         } catch (final VersionRangeResolutionException exception) {
@@ -68,7 +67,7 @@ public class ArtifactDataFetcher implements DataFetcher {
     }
     private static RepositorySystem newRepositorySystem()
     {
-        DefaultServiceLocator locator = MavenRepositorySystemUtils.newServiceLocator();
+        final DefaultServiceLocator locator = MavenRepositorySystemUtils.newServiceLocator();
         locator.addService( RepositoryConnectorFactory.class, BasicRepositoryConnectorFactory.class );
         locator.addService( TransporterFactory.class, FileTransporterFactory.class );
         locator.addService( TransporterFactory.class, HttpTransporterFactory.class );
@@ -77,20 +76,14 @@ public class ArtifactDataFetcher implements DataFetcher {
     }
     public static DefaultRepositorySystemSession newRepositorySystemSession(RepositorySystem system )
     {
-        DefaultRepositorySystemSession session = MavenRepositorySystemUtils.newSession();
-
-        LocalRepository localRepo = new LocalRepository( "target/local-repo" );
+        final DefaultRepositorySystemSession session = MavenRepositorySystemUtils.newSession();
+        final LocalRepository localRepo = new LocalRepository( "target/local-repo" );
         session.setLocalRepositoryManager( system.newLocalRepositoryManager( session, localRepo ) );
-
         session.setTransferListener( new ConsoleTransferListener() );
         session.setRepositoryListener( new ConsoleRepositoryListener() );
-
-        // uncomment to generate dirty trees
-        // session.setDependencyGraphTransformer( null );
-
         return session;
     }
-    public static List<RemoteRepository> newRepositories( RepositorySystem system, RepositorySystemSession session )
+    public static List<RemoteRepository> newRepositories()
     {
         return new ArrayList<>(Arrays.asList(newCentralRepository()));
     }
